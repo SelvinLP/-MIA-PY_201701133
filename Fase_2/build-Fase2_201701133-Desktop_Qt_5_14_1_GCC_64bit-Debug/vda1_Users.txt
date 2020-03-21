@@ -1,0 +1,12 @@
+1,G,root
+1,U,root,root,123
+0,G,hola adios
+3,G,si2
+4,G,si3
+2,U,si2,Nuevo,234
+0,U,si2,Nuevo2,234
+0,U,hola adios,hola1,234
+0,U,hola adios,hola2,234
+2,G,R hola
+4,U,si2,Nuevo3,0923
+3,U,si2,POSICION2,234
