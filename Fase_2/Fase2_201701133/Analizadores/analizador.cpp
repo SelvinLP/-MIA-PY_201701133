@@ -226,12 +226,224 @@ void Analizador::EjecuarComando(){
     }
 
 
+    //ADMINISTRACION DE ARCHIVOS
+
+    s2 = "CHMOD";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO CHMOD"<<std::endl;
+       Admin_Archivos *Nuevo_Archivo=new Admin_Archivos();
+       this->Lista_Montaje.clear();
+       this->Lista_Montaje=AdminDiscos->Lista_Montaje;
+
+       Nuevo_Archivo->Lista_Montaje.clear();
+       Nuevo_Archivo->Lista_Montaje=this->Lista_Montaje;
+       Nuevo_Archivo->id_montada=AdminUsuyG->Id_Particion;
+       Nuevo_Archivo->ID_Usuario=AdminUsuyG->ID_Usuario;
+
+       Nuevo_Archivo->RecibirParametros(ListaParametros);
+       Nuevo_Archivo->Ejecutar_CHMOD();
+    }
+    s2 = "CHOWN";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO CHOWN"<<std::endl;
+       Admin_Archivos *Nuevo_Archivo=new Admin_Archivos();
+       this->Lista_Montaje.clear();
+       this->Lista_Montaje=AdminDiscos->Lista_Montaje;
+
+       Nuevo_Archivo->Lista_Montaje.clear();
+       Nuevo_Archivo->Lista_Montaje=this->Lista_Montaje;
+       Nuevo_Archivo->id_montada=AdminUsuyG->Id_Particion;
+       Nuevo_Archivo->ID_Usuario=AdminUsuyG->ID_Usuario;
+
+       Nuevo_Archivo->RecibirParametros(ListaParametros);
+       Nuevo_Archivo->Ejecutar_CHOWN();
+    }
+    s2 = "CHGRP";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO CHOWN"<<std::endl;
+       AdminUsuyG->RecibirParametros(ListaParametros);
+       this->Lista_Montaje.clear();
+       this->Lista_Montaje=AdminDiscos->Lista_Montaje;
+
+       AdminUsuyG->Lista_Montaje.clear();
+       AdminUsuyG->Lista_Montaje=this->Lista_Montaje;
+       AdminUsuyG->Cambiar_Grupo();
+    }
+    s2 = "MKFILE";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO MKFILE"<<std::endl;
+       Admin_Archivos *Nuevo_Archivo=new Admin_Archivos();
+       this->Lista_Montaje.clear();
+       this->Lista_Montaje=AdminDiscos->Lista_Montaje;
+
+       Nuevo_Archivo->Lista_Montaje.clear();
+       Nuevo_Archivo->Lista_Montaje=this->Lista_Montaje;
+       Nuevo_Archivo->id_montada=AdminUsuyG->Id_Particion;
+       Nuevo_Archivo->ID_Usuario=AdminUsuyG->ID_Usuario;
+
+       Nuevo_Archivo->RecibirParametros(ListaParametros);
+       Nuevo_Archivo->Ejecutar_MKFILE();
+    }
+    s2 = "MKDIR";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO MKDIR"<<std::endl;
+       Admin_Archivos *Nuevo_Archivo=new Admin_Archivos();
+       this->Lista_Montaje.clear();
+       this->Lista_Montaje=AdminDiscos->Lista_Montaje;
+
+       Nuevo_Archivo->Lista_Montaje.clear();
+       Nuevo_Archivo->Lista_Montaje=this->Lista_Montaje;
+       Nuevo_Archivo->id_montada=AdminUsuyG->Id_Particion;
+       Nuevo_Archivo->ID_Usuario=AdminUsuyG->ID_Usuario;
+
+       Nuevo_Archivo->RecibirParametros(ListaParametros);
+       Nuevo_Archivo->Ejecutar_MKDIR();
+    }
+    s2 = "CAT";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO MOSTRAR CONTENIDO DE ARCHIVO"<<std::endl;
+       Admin_Archivos *Nuevo_Archivo=new Admin_Archivos();
+       this->Lista_Montaje.clear();
+       this->Lista_Montaje=AdminDiscos->Lista_Montaje;
+
+       Nuevo_Archivo->Lista_Montaje.clear();
+       Nuevo_Archivo->Lista_Montaje=this->Lista_Montaje;
+       Nuevo_Archivo->id_montada=AdminUsuyG->Id_Particion;
+       Nuevo_Archivo->ID_Usuario=AdminUsuyG->ID_Usuario;
+
+       Nuevo_Archivo->RecibirParametros(ListaParametros);
+       Nuevo_Archivo->Ejecutar_CAT();
+    }
+    s2 = "EDIT";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO EDITAR CONTENIDO"<<std::endl;
+       Admin_Archivos *Nuevo_Archivo=new Admin_Archivos();
+       this->Lista_Montaje.clear();
+       this->Lista_Montaje=AdminDiscos->Lista_Montaje;
+
+       Nuevo_Archivo->Lista_Montaje.clear();
+       Nuevo_Archivo->Lista_Montaje=this->Lista_Montaje;
+       Nuevo_Archivo->id_montada=AdminUsuyG->Id_Particion;
+       Nuevo_Archivo->ID_Usuario=AdminUsuyG->ID_Usuario;
+
+       Nuevo_Archivo->RecibirParametros(ListaParametros);
+       Nuevo_Archivo->Ejecutar_EDIT();
+    }
+    s2 = "REN";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO RENOMBRAR"<<std::endl;
+       Admin_Archivos *Nuevo_Archivo=new Admin_Archivos();
+       this->Lista_Montaje.clear();
+       this->Lista_Montaje=AdminDiscos->Lista_Montaje;
+
+       Nuevo_Archivo->Lista_Montaje.clear();
+       Nuevo_Archivo->Lista_Montaje=this->Lista_Montaje;
+       Nuevo_Archivo->id_montada=AdminUsuyG->Id_Particion;
+       Nuevo_Archivo->ID_Usuario=AdminUsuyG->ID_Usuario;
+
+       Nuevo_Archivo->RecibirParametros(ListaParametros);
+       Nuevo_Archivo->Ejecutar_REN();
+    }
+    s2 = "CP";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO COPIAR"<<std::endl;
+       Admin_Archivos *Nuevo_Archivo=new Admin_Archivos();
+       this->Lista_Montaje.clear();
+       this->Lista_Montaje=AdminDiscos->Lista_Montaje;
+
+       Nuevo_Archivo->Lista_Montaje.clear();
+       Nuevo_Archivo->Lista_Montaje=this->Lista_Montaje;
+       Nuevo_Archivo->id_montada=AdminUsuyG->Id_Particion;
+       Nuevo_Archivo->ID_Usuario=AdminUsuyG->ID_Usuario;
+
+       Nuevo_Archivo->RecibirParametros(ListaParametros);
+       Nuevo_Archivo->Ejecutar_CP();
+    }
+    s2 = "FIND";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO BUSQUEDA"<<std::endl;
+       Admin_Archivos *Nuevo_Archivo=new Admin_Archivos();
+       this->Lista_Montaje.clear();
+       this->Lista_Montaje=AdminDiscos->Lista_Montaje;
+
+       Nuevo_Archivo->Lista_Montaje.clear();
+       Nuevo_Archivo->Lista_Montaje=this->Lista_Montaje;
+       Nuevo_Archivo->id_montada=AdminUsuyG->Id_Particion;
+       Nuevo_Archivo->ID_Usuario=AdminUsuyG->ID_Usuario;
+
+       Nuevo_Archivo->RecibirParametros(ListaParametros);
+       Nuevo_Archivo->Ejecutar_FIND();
+    }
+
+    //EVENTO PERDIDDA Y RECUPERACION
+    s2 = "LOSS";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO LOSS"<<std::endl;
+       int cantObligatoria=0;
+       std::string id;
+       //recorrer lista
+       QList  <std::string> :: iterator it2;
+       for(it2 = this->ListaParametros.begin(); it2 != this->ListaParametros.end(); ++it2){
+           std::string temporalstring=*it2;
+
+           std::string s2 = "ID";
+           if(case_insensitive_match(temporalstring, s2)) {
+              cantObligatoria++;
+              QList  <std::string> :: iterator it3=std::next(it2);
+              id=*it3;
+           }
+       }
+       if(cantObligatoria>=1){
+           Id_Loss.append(id);
+           std::cout << "Se ha realizado un loss sobre: "<<id<<std::endl;
+       }else{
+           std::cout << "NO SE CUMPLIERO LOS REQUISITOS OBLIGATORIOS"<<std::endl;
+       }
+    }
+    s2 = "RECOVERY";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO RECOVERY"<<std::endl;
+       int cantObligatoria=0;
+       std::string id;
+       //recorrer lista
+       QList  <std::string> :: iterator it2;
+       for(it2 = this->ListaParametros.begin(); it2 != this->ListaParametros.end(); ++it2){
+           std::string temporalstring=*it2;
+
+           std::string s2 = "ID";
+           if(case_insensitive_match(temporalstring, s2)) {
+              cantObligatoria++;
+              QList  <std::string> :: iterator it3=std::next(it2);
+              id=*it3;
+           }
+       }
+       if(cantObligatoria>=1){
+           for(int pos=0;pos<Id_Loss.size();pos++){
+               if(Id_Loss[pos]==id){
+                   Id_Loss.removeAt(pos);
+                   std::cout << "Se han recuperado los datos de: "<<id<<std::endl;
+               }
+           }
+       }else{
+           std::cout << "NO SE CUMPLIERO LOS REQUISITOS OBLIGATORIOS"<<std::endl;
+       }
+    }
+
+    //PAUSA
+    s2 = "PAUSE";
+    if(case_insensitive_match(resetm, s2)) {
+       std::cout << "EVENTO PAUSA"<<std::endl;
+       std::cout << "Presione Cualquier Tecla Para Continuar"<<std::endl;
+       std::cin.get();
+       QProcess::execute("clear");
+    }
 
     //REPORTES
     s2 = "REP";
     if(case_insensitive_match(resetm, s2)) {
        std::cout << "EVENTO REPORTE"<<std::endl;
        AdminDiscos->RecibirParametros(ListaParametros);
+       AdminDiscos->Id_Loss=Id_Loss;
        AdminDiscos->Reporte();
     }
 

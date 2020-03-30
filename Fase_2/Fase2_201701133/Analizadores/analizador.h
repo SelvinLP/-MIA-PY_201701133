@@ -10,6 +10,7 @@
 
 #include <admin_disco.h>
 #include <Administrador_UsuyGrup/admin_usuariosygrupos.h>
+#include <admin_archivos.h>
 class Analizador
 {
 public:
@@ -19,6 +20,7 @@ public:
     Admin_UsuariosyGrupos *AdminUsuyG;
 
     QList <Nodo_Mount> Lista_Montaje;
+    QList <std::string> Id_Loss;
 
     void LeerArchivo(char Ruta[200]);
     void AnalisarComando(char Comando[200]);

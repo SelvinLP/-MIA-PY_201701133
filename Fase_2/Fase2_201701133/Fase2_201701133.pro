@@ -16,11 +16,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         Administrador_UsuyGrup/admin_usuariosygrupos.cpp \
+        Administrador_UsuyGrup/permisos.cpp \
         Analizadores/analizador.cpp \
         Analizadores/analizador_caracteres_o.cpp \
+        Structs/bitmap.cpp \
+        Structs/bloque_journali.cpp \
+        Structs/bloqueapuntador.cpp \
+        Structs/bloquearchivo.cpp \
+        Structs/bloquecarpeta.cpp \
+        Structs/superbloque.cpp \
+        Structs/tablainodo.cpp \
         Users/structs_users.cpp \
+        admin_archivos.cpp \
         admin_disco.cpp \
         admin_particiones.cpp \
+        graficar_reportes.cpp \
         main.cpp \
         nodo_mount.cpp
 
@@ -31,9 +41,19 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     Administrador_UsuyGrup/admin_usuariosygrupos.h \
+    Administrador_UsuyGrup/permisos.h \
     Analizadores/analizador.h \
     Analizadores/analizador_caracteres_o.h \
+    Structs/bitmap.h \
+    Structs/bloque_journali.h \
+    Structs/bloqueapuntador.h \
+    Structs/bloquearchivo.h \
+    Structs/bloquecarpeta.h \
+    Structs/superbloque.h \
+    Structs/tablainodo.h \
     Users/structs_users.h \
+    admin_archivos.h \
     admin_disco.h \
     admin_particiones.h \
+    graficar_reportes.h \
     nodo_mount.h

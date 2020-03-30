@@ -10,6 +10,8 @@
 #include <QString>
 #include <nodo_mount.h>
 #include <Analizadores/analizador_caracteres_o.h>
+//clases
+#include <Structs/bloquearchivo.h>
 class Admin_UsuariosyGrupos
 {
 public:
@@ -19,6 +21,10 @@ public:
 
     QString UsuarioLog;
     QString Id_Particion;
+    unsigned long long int  Posicion_Inicio_Particion;
+
+    int ID_Usuario;
+    int ID_Grupo;
 
     void RecibirParametros(QList  <std::string> P);
     void Login();
@@ -27,7 +33,7 @@ public:
     void EliminarGrupo();
     void CrearUsuario();
     void EliminarUsuario();
-
+    void Cambiar_Grupo();
     //comparador
     int case_insensitive_match(std::string s1, std::string s2);
 };

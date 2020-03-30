@@ -53,19 +53,39 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.cpp \
+		../Fase2_201701133/Administrador_UsuyGrup/permisos.cpp \
 		../Fase2_201701133/Analizadores/analizador.cpp \
 		../Fase2_201701133/Analizadores/analizador_caracteres_o.cpp \
+		../Fase2_201701133/Structs/bitmap.cpp \
+		../Fase2_201701133/Structs/bloque_journali.cpp \
+		../Fase2_201701133/Structs/bloqueapuntador.cpp \
+		../Fase2_201701133/Structs/bloquearchivo.cpp \
+		../Fase2_201701133/Structs/bloquecarpeta.cpp \
+		../Fase2_201701133/Structs/superbloque.cpp \
+		../Fase2_201701133/Structs/tablainodo.cpp \
 		../Fase2_201701133/Users/structs_users.cpp \
+		../Fase2_201701133/admin_archivos.cpp \
 		../Fase2_201701133/admin_disco.cpp \
 		../Fase2_201701133/admin_particiones.cpp \
+		../Fase2_201701133/graficar_reportes.cpp \
 		../Fase2_201701133/main.cpp \
 		../Fase2_201701133/nodo_mount.cpp 
 OBJECTS       = admin_usuariosygrupos.o \
+		permisos.o \
 		analizador.o \
 		analizador_caracteres_o.o \
+		bitmap.o \
+		bloque_journali.o \
+		bloqueapuntador.o \
+		bloquearchivo.o \
+		bloquecarpeta.o \
+		superbloque.o \
+		tablainodo.o \
 		structs_users.o \
+		admin_archivos.o \
 		admin_disco.o \
 		admin_particiones.o \
+		graficar_reportes.o \
 		main.o \
 		nodo_mount.o
 DIST          = ../../../../QT/5.14.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -278,17 +298,37 @@ DIST          = ../../../../QT/5.14.1/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../QT/5.14.1/gcc_64/mkspecs/features/yacc.prf \
 		../../../../QT/5.14.1/gcc_64/mkspecs/features/lex.prf \
 		../Fase2_201701133/Fase2_201701133.pro ../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.h \
+		../Fase2_201701133/Administrador_UsuyGrup/permisos.h \
 		../Fase2_201701133/Analizadores/analizador.h \
 		../Fase2_201701133/Analizadores/analizador_caracteres_o.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/tablainodo.h \
 		../Fase2_201701133/Users/structs_users.h \
+		../Fase2_201701133/admin_archivos.h \
 		../Fase2_201701133/admin_disco.h \
 		../Fase2_201701133/admin_particiones.h \
+		../Fase2_201701133/graficar_reportes.h \
 		../Fase2_201701133/nodo_mount.h ../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.cpp \
+		../Fase2_201701133/Administrador_UsuyGrup/permisos.cpp \
 		../Fase2_201701133/Analizadores/analizador.cpp \
 		../Fase2_201701133/Analizadores/analizador_caracteres_o.cpp \
+		../Fase2_201701133/Structs/bitmap.cpp \
+		../Fase2_201701133/Structs/bloque_journali.cpp \
+		../Fase2_201701133/Structs/bloqueapuntador.cpp \
+		../Fase2_201701133/Structs/bloquearchivo.cpp \
+		../Fase2_201701133/Structs/bloquecarpeta.cpp \
+		../Fase2_201701133/Structs/superbloque.cpp \
+		../Fase2_201701133/Structs/tablainodo.cpp \
 		../Fase2_201701133/Users/structs_users.cpp \
+		../Fase2_201701133/admin_archivos.cpp \
 		../Fase2_201701133/admin_disco.cpp \
 		../Fase2_201701133/admin_particiones.cpp \
+		../Fase2_201701133/graficar_reportes.cpp \
 		../Fase2_201701133/main.cpp \
 		../Fase2_201701133/nodo_mount.cpp
 QMAKE_TARGET  = Fase2_201701133
@@ -738,8 +778,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../QT/5.14.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.h ../Fase2_201701133/Analizadores/analizador.h ../Fase2_201701133/Analizadores/analizador_caracteres_o.h ../Fase2_201701133/Users/structs_users.h ../Fase2_201701133/admin_disco.h ../Fase2_201701133/admin_particiones.h ../Fase2_201701133/nodo_mount.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.cpp ../Fase2_201701133/Analizadores/analizador.cpp ../Fase2_201701133/Analizadores/analizador_caracteres_o.cpp ../Fase2_201701133/Users/structs_users.cpp ../Fase2_201701133/admin_disco.cpp ../Fase2_201701133/admin_particiones.cpp ../Fase2_201701133/main.cpp ../Fase2_201701133/nodo_mount.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.h ../Fase2_201701133/Administrador_UsuyGrup/permisos.h ../Fase2_201701133/Analizadores/analizador.h ../Fase2_201701133/Analizadores/analizador_caracteres_o.h ../Fase2_201701133/Structs/bitmap.h ../Fase2_201701133/Structs/bloque_journali.h ../Fase2_201701133/Structs/bloqueapuntador.h ../Fase2_201701133/Structs/bloquearchivo.h ../Fase2_201701133/Structs/bloquecarpeta.h ../Fase2_201701133/Structs/superbloque.h ../Fase2_201701133/Structs/tablainodo.h ../Fase2_201701133/Users/structs_users.h ../Fase2_201701133/admin_archivos.h ../Fase2_201701133/admin_disco.h ../Fase2_201701133/admin_particiones.h ../Fase2_201701133/graficar_reportes.h ../Fase2_201701133/nodo_mount.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.cpp ../Fase2_201701133/Administrador_UsuyGrup/permisos.cpp ../Fase2_201701133/Analizadores/analizador.cpp ../Fase2_201701133/Analizadores/analizador_caracteres_o.cpp ../Fase2_201701133/Structs/bitmap.cpp ../Fase2_201701133/Structs/bloque_journali.cpp ../Fase2_201701133/Structs/bloqueapuntador.cpp ../Fase2_201701133/Structs/bloquearchivo.cpp ../Fase2_201701133/Structs/bloquecarpeta.cpp ../Fase2_201701133/Structs/superbloque.cpp ../Fase2_201701133/Structs/tablainodo.cpp ../Fase2_201701133/Users/structs_users.cpp ../Fase2_201701133/admin_archivos.cpp ../Fase2_201701133/admin_disco.cpp ../Fase2_201701133/admin_particiones.cpp ../Fase2_201701133/graficar_reportes.cpp ../Fase2_201701133/main.cpp ../Fase2_201701133/nodo_mount.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -834,8 +874,96 @@ admin_usuariosygrupos.o: ../Fase2_201701133/Administrador_UsuyGrup/admin_usuario
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/QString \
 		../Fase2_201701133/nodo_mount.h \
-		../Fase2_201701133/Users/structs_users.h
+		../Fase2_201701133/Users/structs_users.h \
+		../Fase2_201701133/Analizadores/analizador_caracteres_o.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qdebug.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhash.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiodevice.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobject.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmetatype.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlocale.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvariant.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qset.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qdir.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qfileinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qfile.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocess.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o admin_usuariosygrupos.o ../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.cpp
+
+permisos.o: ../Fase2_201701133/Administrador_UsuyGrup/permisos.cpp ../Fase2_201701133/Administrador_UsuyGrup/permisos.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstring.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qchar.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qflags.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpair.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvector.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o permisos.o ../Fase2_201701133/Administrador_UsuyGrup/permisos.cpp
 
 analizador.o: ../Fase2_201701133/Analizadores/analizador.cpp ../Fase2_201701133/Analizadores/analizador.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
@@ -882,12 +1010,7 @@ analizador.o: ../Fase2_201701133/Analizadores/analizador.cpp ../Fase2_201701133/
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringlist.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qregexp.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h \
-		../Fase2_201701133/admin_disco.h \
-		../../../../QT/5.14.1/gcc_64/include/QtCore/QString \
-		../../../../QT/5.14.1/gcc_64/include/QtCore/qdebug.h \
-		../../../../QT/5.14.1/gcc_64/include/QtCore/qhash.h \
-		../../../../QT/5.14.1/gcc_64/include/QtCore/qmap.h \
-		../../../../QT/5.14.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocess.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qiodevice.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qobject.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qobjectdefs.h \
@@ -898,9 +1021,15 @@ analizador.o: ../Fase2_201701133/Analizadores/analizador.cpp ../Fase2_201701133/
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qvarlengtharray.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhash.h \
+		../Fase2_201701133/admin_disco.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QString \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qdebug.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtextstream.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qlocale.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qvariant.h \
-		../../../../QT/5.14.1/gcc_64/include/QtCore/qshareddata.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qset.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qsharedpointer.h \
@@ -909,12 +1038,21 @@ analizador.o: ../Fase2_201701133/Analizadores/analizador.cpp ../Fase2_201701133/
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qfile.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocess.h \
 		../Fase2_201701133/admin_particiones.h \
 		../Fase2_201701133/nodo_mount.h \
 		../Fase2_201701133/Users/structs_users.h \
 		../Fase2_201701133/Analizadores/analizador_caracteres_o.h \
-		../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.h
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h \
+		../Fase2_201701133/graficar_reportes.h \
+		../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.h \
+		../Fase2_201701133/admin_archivos.h \
+		../Fase2_201701133/Administrador_UsuyGrup/permisos.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o analizador.o ../Fase2_201701133/Analizadores/analizador.cpp
 
 analizador_caracteres_o.o: ../Fase2_201701133/Analizadores/analizador_caracteres_o.cpp ../Fase2_201701133/Analizadores/analizador_caracteres_o.h \
@@ -991,8 +1129,408 @@ analizador_caracteres_o.o: ../Fase2_201701133/Analizadores/analizador_caracteres
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocess.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o analizador_caracteres_o.o ../Fase2_201701133/Analizadores/analizador_caracteres_o.cpp
 
+bitmap.o: ../Fase2_201701133/Structs/bitmap.cpp ../Fase2_201701133/Structs/bitmap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bitmap.o ../Fase2_201701133/Structs/bitmap.cpp
+
+bloque_journali.o: ../Fase2_201701133/Structs/bloque_journali.cpp ../Fase2_201701133/Structs/bloque_journali.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstring.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qchar.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qflags.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpair.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvector.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bloque_journali.o ../Fase2_201701133/Structs/bloque_journali.cpp
+
+bloqueapuntador.o: ../Fase2_201701133/Structs/bloqueapuntador.cpp ../Fase2_201701133/Structs/bloqueapuntador.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstring.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qchar.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qflags.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpair.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvector.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bloqueapuntador.o ../Fase2_201701133/Structs/bloqueapuntador.cpp
+
+bloquearchivo.o: ../Fase2_201701133/Structs/bloquearchivo.cpp ../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/superbloque.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstring.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qchar.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qflags.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpair.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvector.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bloquearchivo.o ../Fase2_201701133/Structs/bloquearchivo.cpp
+
+bloquecarpeta.o: ../Fase2_201701133/Structs/bloquecarpeta.cpp ../Fase2_201701133/Structs/bloquecarpeta.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstring.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qchar.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qflags.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpair.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvector.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bloquecarpeta.o ../Fase2_201701133/Structs/bloquecarpeta.cpp
+
+superbloque.o: ../Fase2_201701133/Structs/superbloque.cpp ../Fase2_201701133/Structs/superbloque.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstring.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qchar.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qflags.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpair.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvector.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o superbloque.o ../Fase2_201701133/Structs/superbloque.cpp
+
+tablainodo.o: ../Fase2_201701133/Structs/tablainodo.cpp ../Fase2_201701133/Structs/tablainodo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstring.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qchar.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qflags.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpair.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvector.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tablainodo.o ../Fase2_201701133/Structs/tablainodo.cpp
+
 structs_users.o: ../Fase2_201701133/Users/structs_users.cpp ../Fase2_201701133/Users/structs_users.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o structs_users.o ../Fase2_201701133/Users/structs_users.cpp
+
+admin_archivos.o: ../Fase2_201701133/admin_archivos.cpp ../Fase2_201701133/admin_archivos.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qflags.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstring.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qchar.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpair.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvector.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QString \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qdebug.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhash.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiodevice.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobject.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmetatype.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlocale.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvariant.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qset.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qdir.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qfileinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qfile.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocess.h \
+		../Fase2_201701133/Analizadores/analizador_caracteres_o.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h \
+		../Fase2_201701133/nodo_mount.h \
+		../Fase2_201701133/Users/structs_users.h \
+		../Fase2_201701133/Administrador_UsuyGrup/permisos.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o admin_archivos.o ../Fase2_201701133/admin_archivos.cpp
 
 admin_disco.o: ../Fase2_201701133/admin_disco.cpp ../Fase2_201701133/admin_disco.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
@@ -1069,7 +1607,15 @@ admin_disco.o: ../Fase2_201701133/admin_disco.cpp ../Fase2_201701133/admin_disco
 		../Fase2_201701133/admin_particiones.h \
 		../Fase2_201701133/nodo_mount.h \
 		../Fase2_201701133/Users/structs_users.h \
-		../Fase2_201701133/Analizadores/analizador_caracteres_o.h
+		../Fase2_201701133/Analizadores/analizador_caracteres_o.h \
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h \
+		../Fase2_201701133/graficar_reportes.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o admin_disco.o ../Fase2_201701133/admin_disco.cpp
 
 admin_particiones.o: ../Fase2_201701133/admin_particiones.cpp ../Fase2_201701133/admin_particiones.h \
@@ -1131,6 +1677,92 @@ admin_particiones.o: ../Fase2_201701133/admin_particiones.cpp ../Fase2_201701133
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qshareddata.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qhash.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o admin_particiones.o ../Fase2_201701133/admin_particiones.cpp
+
+graficar_reportes.o: ../Fase2_201701133/graficar_reportes.cpp ../Fase2_201701133/graficar_reportes.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qflags.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstring.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qchar.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpair.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvector.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/QString \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qdir.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qfileinfo.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qfile.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qiodevice.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobject.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmetatype.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qhash.h \
+		../Fase2_201701133/nodo_mount.h \
+		../Fase2_201701133/Users/structs_users.h \
+		../Fase2_201701133/admin_disco.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qdebug.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qmap.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qlocale.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qvariant.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qset.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocess.h \
+		../Fase2_201701133/admin_particiones.h \
+		../Fase2_201701133/Analizadores/analizador_caracteres_o.h \
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graficar_reportes.o ../Fase2_201701133/graficar_reportes.cpp
 
 main.o: ../Fase2_201701133/main.cpp ../../../../QT/5.14.1/gcc_64/include/QtCore/QCoreApplication \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1202,18 +1834,28 @@ main.o: ../Fase2_201701133/main.cpp ../../../../QT/5.14.1/gcc_64/include/QtCore/
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		../Fase2_201701133/Analizadores/analizador.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/QList \
+		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocess.h \
 		../Fase2_201701133/admin_disco.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/QString \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qdir.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qfile.h \
 		../../../../QT/5.14.1/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../QT/5.14.1/gcc_64/include/QtCore/qprocess.h \
 		../Fase2_201701133/admin_particiones.h \
 		../Fase2_201701133/nodo_mount.h \
 		../Fase2_201701133/Users/structs_users.h \
 		../Fase2_201701133/Analizadores/analizador_caracteres_o.h \
-		../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.h
+		../Fase2_201701133/Structs/superbloque.h \
+		../Fase2_201701133/Structs/bloqueapuntador.h \
+		../Fase2_201701133/Structs/bloquearchivo.h \
+		../Fase2_201701133/Structs/bloquecarpeta.h \
+		../Fase2_201701133/Structs/tablainodo.h \
+		../Fase2_201701133/Structs/bitmap.h \
+		../Fase2_201701133/Structs/bloque_journali.h \
+		../Fase2_201701133/graficar_reportes.h \
+		../Fase2_201701133/Administrador_UsuyGrup/admin_usuariosygrupos.h \
+		../Fase2_201701133/admin_archivos.h \
+		../Fase2_201701133/Administrador_UsuyGrup/permisos.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Fase2_201701133/main.cpp
 
 nodo_mount.o: ../Fase2_201701133/nodo_mount.cpp ../Fase2_201701133/nodo_mount.h \

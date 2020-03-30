@@ -19,6 +19,7 @@ public:
     //variables
     int tamanio;
     std::string ruta;
+    std::string rutaReporte;
     char fit[3]="FF";
     int tamaniobytes=1048576;
     std::string tiponombre;
@@ -28,6 +29,16 @@ public:
     std::string Usuario;
     std::string Password;
     std::string Grupo;
+
+    //admin de archivos
+    std::string P;
+    std::string cont_ruta;
+    std::string file;
+
+    //permisos
+    int ugo;
+    std::string R;
+
     void RecibirParametros(QList  <std::string> P);
 
     void AnalisarCaracteres();

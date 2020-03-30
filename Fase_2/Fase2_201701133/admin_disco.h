@@ -17,9 +17,10 @@
 #include <admin_particiones.h>
 #include <nodo_mount.h>
 #include <Analizadores/analizador_caracteres_o.h>
-
-
+#include <Structs/superbloque.h>
+#include <graficar_reportes.h>
 #include <Users/structs_users.h>
+#include <Structs/bloque_journali.h>
 
 struct MBR_Disco{
   int mbr_tamanio;
@@ -46,6 +47,7 @@ public:
 
     QList <Nodo_Mount> Lista_Montaje;
     QList <Nodo_Mount> RutaCantidad;
+    QList <std::string> Id_Loss;
     //structs particiones
     //disco
     void RecibirParametros(QList  <std::string> P);

@@ -14,17 +14,8 @@ struct MBR_Particion{
   int part_start;
   int part_size;
   char part_name[16];
-  char part_User[16];
 };
-struct EBR_Particion_Ext{
-  char part_status [10];
-  char part_fit [3];
-  int part_start;
-  int part_size;
-  int part_next;
-  char part_name[16];
 
-};
 class Admin_Particiones
 {
 public:

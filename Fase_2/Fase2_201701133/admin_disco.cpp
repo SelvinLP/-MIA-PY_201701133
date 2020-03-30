@@ -156,6 +156,7 @@ void Admin_Disco::Reporte(){
     std::string tiponombre=Analizador_C->tiponombre;
     std::string ruta=Analizador_C->ruta;
     std::string id=Analizador_C->id;
+    std::string rutabuscar=Analizador_C->rutaReporte;
     int cantObligatoria=0;
     //Validaciones
     if(ruta.length()!=0){cantObligatoria++;}
@@ -164,304 +165,43 @@ void Admin_Disco::Reporte(){
 
     if(cantObligatoria>=3){
         std::string rutaarir;
+        Graficar_Reportes *reportes=new Graficar_Reportes();
+        reportes->Lista_Montaje=this->Lista_Montaje;
+        reportes->Id_Loss=Id_Loss;
         if(tiponombre=="mbr"){
-            //buscarruta
-            bool busc=false;
-            QList  <Nodo_Mount> :: iterator it3;
-            //encontrar id y cantidad
-            for(it3 = this->Lista_Montaje.begin(); it3 != this->Lista_Montaje.end(); ++it3){
-                std::string temporalstring2=it3->Id;
-                //comprobamos si ya esta montado
-                if(temporalstring2==id){
-                    rutaarir=it3->Ruta;
-                    busc=true;
-                    break;
-                }
-            }
-
-            if(busc==true){
-                FILE *arch;
-                arch=fopen(rutaarir.c_str(),"r+b");
-                if (arch==NULL){
-                    exit(1);
-                }else{
-                    MBR_Disco Nodo_AP;
-                    fread(&Nodo_AP, sizeof(MBR_Disco), 1, arch);
-                    std::string CadenaImprimir;
-
-                    CadenaImprimir="digraph D { \n";
-                    CadenaImprimir+="node [shape=plaintext] \n";
-                    CadenaImprimir+="some_node [ \n";
-                    CadenaImprimir+="label=< \n";
-                    CadenaImprimir+="<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">";
-                    //agregar columnas
-                    CadenaImprimir+="<tr><td> "+rutaarir+" </td></tr> \n";
-                    CadenaImprimir+="<tr><td> NOMBRE </td><td> VALOR </td></tr> \n";
-                    //campos
-                    CadenaImprimir+="<tr><td> mbr_tamanio </td><td> "+std::to_string(Nodo_AP.mbr_tamanio)+" </td></tr> \n";
-                    CadenaImprimir+="<tr><td> mbr_fecha_creacion </td><td> ";
-                    CadenaImprimir.append(Nodo_AP.mbr_fecha_creacion);
-                    CadenaImprimir+=" </td></tr> \n";
-                    CadenaImprimir+="<tr><td> mbr_disk_asignature </td><td> "+std::to_string(Nodo_AP.mbr_disk_asignature)+" </td></tr> \n";
-                    CadenaImprimir+="<tr><td> mbr_fit </td><td> ";
-                    CadenaImprimir.append(Nodo_AP.fisk_fit);
-                    CadenaImprimir+=" </td></tr> \n";
-                    //para particiones
-                    if(strcmp(Nodo_AP.mbr_partition_1.part_status,"S")== 0){
-                        CadenaImprimir+="<tr><td> mbr_partition_1";
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> NOMBRE </td><td> VALOR </td></tr> \n";
-                        //campos
-                        CadenaImprimir+="<tr><td> part_status </td><td> Activo </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_type </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_1.part_type);
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_fit </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_1.part_fit);
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_start </td><td> "+std::to_string(Nodo_AP.mbr_partition_1.part_start)+" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_size </td><td> "+std::to_string(Nodo_AP.mbr_partition_1.part_size)+" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_name </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_1.part_name);
-                        CadenaImprimir+=" </td></tr> \n";
-                    }
-                    if(strcmp(Nodo_AP.mbr_partition_2.part_status,"S")== 0){
-                        CadenaImprimir+="<tr><td> mbr_partition_2";
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> NOMBRE </td><td> VALOR </td></tr> \n";
-                        //campos
-                        CadenaImprimir+="<tr><td> part_status </td><td> Activo </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_type </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_2.part_type);
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_fit </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_2.part_fit);
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_start </td><td> "+std::to_string(Nodo_AP.mbr_partition_2.part_start)+" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_size </td><td> "+std::to_string(Nodo_AP.mbr_partition_2.part_size)+" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_name </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_2.part_name);
-                        CadenaImprimir+=" </td></tr> \n";
-                    }
-                    if(strcmp(Nodo_AP.mbr_partition_3.part_status,"S")== 0){
-                        CadenaImprimir+="<tr><td> mbr_partition_3";
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> NOMBRE </td><td> VALOR </td></tr> \n";
-                        //campos
-                        CadenaImprimir+="<tr><td> part_status </td><td> Activo </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_type </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_3.part_type);
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_fit </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_3.part_fit);
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_start </td><td> "+std::to_string(Nodo_AP.mbr_partition_3.part_start)+" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_size </td><td> "+std::to_string(Nodo_AP.mbr_partition_3.part_size)+" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_name </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_3.part_name);
-                        CadenaImprimir+=" </td></tr> \n";
-                    }
-                    if(strcmp(Nodo_AP.mbr_partition_4.part_status,"S")== 0){
-                        CadenaImprimir+="<tr><td> mbr_partition_4";
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> NOMBRE </td><td> VALOR </td></tr> \n";
-                        //campos
-                        CadenaImprimir+="<tr><td> part_status </td><td> Activo </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_type </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_4.part_type);
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_fit </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_4.part_fit);
-                        CadenaImprimir+=" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_start </td><td> "+std::to_string(Nodo_AP.mbr_partition_4.part_start)+" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_size </td><td> "+std::to_string(Nodo_AP.mbr_partition_4.part_size)+" </td></tr> \n";
-                        CadenaImprimir+="<tr><td> part_name </td><td> ";
-                        CadenaImprimir.append(Nodo_AP.mbr_partition_4.part_name);
-                        CadenaImprimir+=" </td></tr> \n";
-                    }
-                    CadenaImprimir+="</table>>]; \n";
-
-                    CadenaImprimir+="}";
-                    std::ofstream file;
-                    std::string rutaparadot;
-                    for(int a=0;a<ruta.size();a++){
-                        if(int(ruta.at(a))==46){
-                            break;
-                        }
-                        rutaparadot+=ruta.at(a);
-
-                    }
-                    QString qstr = QString::fromStdString(rutaparadot);
-                    QStringList list1 = qstr.split('/');
-                    QString s;
-                    for( int i=0; i<list1.size(); i++ ){
-                        if(i==list1.size()-1){
-
-                        }else{
-                            s+=list1.at(i);
-                            QDir dir(s); if (!dir.exists()) { dir.mkpath("."); }
-                            s+="/";
-                        }
-                    }
-                    std::string rutanueva=rutaparadot+id+".dot";
-                    file.open(rutanueva);
-                    file <<CadenaImprimir;
-                    file.close();
-                    std::string comando="dot -Tpng "+rutanueva+" -o "+rutaparadot+".png";
-                    std::cout <<"Reporte: "<<rutaparadot<<std::endl;
-                    char Comandogenerar[100];
-                    strcpy(Comandogenerar,comando.c_str());
-                    system(Comandogenerar);
-                }
-                fclose(arch);
-            }else{
-                std::cout << "ID NO MONTADO"<<std::endl;
-            }
-
-
+            reportes->Graficar_Mbr(rutaarir,id,ruta);
         }
-
         if(tiponombre=="disk"){
-            //buscarruta
-            bool busc=false;
-            QList  <Nodo_Mount> :: iterator it3;
-            //encontrar id y cantidad
-            for(it3 = this->Lista_Montaje.begin(); it3 != this->Lista_Montaje.end(); ++it3){
-                std::string temporalstring2=it3->Id;
-                //comprobamos si ya esta montado
-                if(temporalstring2==id){
-                    rutaarir=it3->Ruta;
-                    busc=true;
-                    break;
-                }
-            }
-
-            if(busc==true){
-                std::cout <<rutaarir<<std::endl;
-                FILE *arch;
-                arch=fopen(rutaarir.c_str(),"r+b");
-                if (arch==NULL){
-                    exit(1);
-                }else{
-                    MBR_Disco Nodo_AP;
-                    fread(&Nodo_AP, sizeof(MBR_Disco), 1, arch);
-                    std::string CadenaImprimir;
-                    //guardo las particiones
-                    MBR_Particion ArrayParticiones[5];
-                    ArrayParticiones[0]=Nodo_AP.mbr_partition_1;
-                    ArrayParticiones[1]=Nodo_AP.mbr_partition_2;
-                    ArrayParticiones[2]=Nodo_AP.mbr_partition_3;
-                    ArrayParticiones[3]=Nodo_AP.mbr_partition_4;
-                    int arr[4];
-                    int n = sizeof(arr)/sizeof(arr[0]);
-                    arr[3]=Nodo_AP.mbr_partition_4.part_start;
-                    arr[1]=Nodo_AP.mbr_partition_2.part_start;
-                    arr[2]=Nodo_AP.mbr_partition_3.part_start;
-                    arr[0]=Nodo_AP.mbr_partition_1.part_start;
-                    std::sort(arr, arr+n);
-
-
-
-                    CadenaImprimir="digraph D { \n";
-                    CadenaImprimir+="graph [label=\"REPORTE DISK\", labelloc=t, fontsize=20]; rankdir=TB \n";
-                    CadenaImprimir+="node[shape=record,style=filled] \n";
-                    CadenaImprimir+="Datos[label =\"MBR ";
-
-                    //datos
-                    bool bandera=false;
-                    float sumaLibre=0;
-                    for(int par=0;par<4;par++){
-                        //Vamos Validando si esta lleno y lo insertamos sino valida hasta que encuentre uno lleno
-                        if(strcmp(ArrayParticiones[par].part_status,"S")==0){
-                            //PRIMERO HACEMOS CALUCLO DE ESPACIO LIBRE
-                            if(bandera==true){
-                                CadenaImprimir+="| {Libre |";
-                                float porcentajeLibre=(sumaLibre/((float)Nodo_AP.mbr_tamanio))*100;
-                                std::cout<<"SUMA TOTAL LIBRE "<<sumaLibre<<std::endl;
-                                CadenaImprimir+=std::to_string(porcentajeLibre);
-
-
-                                sumaLibre=0;
-                                CadenaImprimir+=" % }";
-                                bandera=false;
-                            }
-
-
-
-                            //insertamos
-                            CadenaImprimir+="| {";
-                            CadenaImprimir.append(ArrayParticiones[par].part_name);
-                            CadenaImprimir+=": ";
-                            CadenaImprimir.append(ArrayParticiones[par].part_type);
-
-                            float porcentaje=(float)((float)(ArrayParticiones[par].part_size/(float)Nodo_AP.mbr_tamanio)*100);
-                            std::cout<<porcentaje<<std::endl;
-                            CadenaImprimir+="|"+std::to_string(porcentaje)+"% }";
-
-                        }else{
-                            std::cout<<"SUMA Antes LIBE "<<sumaLibre<<std::endl;
-                            std::cout<<"SUMA  LIBE "<<(float)(ArrayParticiones[par].part_size)<<std::endl;
-                            sumaLibre+=(float)(ArrayParticiones[par].part_size);
-                            std::cout<<"SUMA Despues LIBE "<<sumaLibre<<std::endl;
-                            bandera=true;
-
-
-                        }
-                        if(par==3){
-                            float posf=((float)Nodo_AP.mbr_tamanio)-((float)ArrayParticiones[par].part_start)-((float)ArrayParticiones[par].part_size);
-                            sumaLibre+=posf;
-
-                            CadenaImprimir+="| {Libre |";
-                            float porcentajeLibre=(sumaLibre/((float)Nodo_AP.mbr_tamanio))*100;
-                            CadenaImprimir+=std::to_string(porcentajeLibre);
-
-                            CadenaImprimir+=" % }";
-                        }
-
-                    }
-
-                    CadenaImprimir+="\"]\n";
-                    CadenaImprimir+="}";
-
-
-                    std::ofstream file;
-                    std::string rutaparadot;
-                    for(int a=0;a<ruta.size();a++){
-                        if(int(ruta.at(a))==46){
-                            break;
-                        }
-                        rutaparadot+=ruta.at(a);
-
-                    }
-                    QString qstr = QString::fromStdString(rutaparadot);
-                    QStringList list1 = qstr.split('/');
-                    QString s;
-                    for( int i=0; i<list1.size(); i++ ){
-                        if(i==list1.size()-1){
-
-                        }else{
-                            s+=list1.at(i);
-                            QDir dir(s); if (!dir.exists()) { dir.mkpath("."); }
-                            s+="/";
-                        }
-                    }
-                    std::string rutanueva=rutaparadot+id+".dot";
-                    file.open(rutanueva);
-                    file <<CadenaImprimir;
-                    file.close();
-                    std::string comando="dot -Tpng "+rutanueva+" -o "+rutaparadot+".png";
-                    char Comandogenerar[100];
-                    strcpy(Comandogenerar,comando.c_str());
-                    system(Comandogenerar);
-                }
-                fclose(arch);
-            }else{
-                std::cout << "ID NO MONTADO"<<std::endl;
-            }
-
-
-
+            reportes->Graficar_Disk(rutaarir,id,ruta);
         }
+        if(tiponombre=="sb"){
+            reportes->Graficar_Sb(rutaarir,id,ruta);
+        }
+        if(tiponombre=="bm_inode"){
+            reportes->Graficar_bm(rutaarir,id,ruta,0);
+        }
+        if(tiponombre=="bm_block"){
+            reportes->Graficar_bm(rutaarir,id,ruta,1);
+        }
+        if(tiponombre=="tree"){
+            reportes->Graficar_tree(rutaarir,id,ruta);
+        }
+        if(tiponombre=="inode"){
+            reportes->Graficar_inode(rutaarir,id,ruta);
+        }
+        if(tiponombre=="block"){
+            reportes->Graficar_block(rutaarir,id,ruta);
+        }
+        if(tiponombre=="file"){
+            reportes->Graficar_file(rutaarir,id,ruta,rutabuscar);
+        }
+        if(tiponombre=="journaling"){
+            reportes->Graficar_Journaling(rutaarir,id,ruta);
+        }
+        if(tiponombre=="ls"){
+            reportes->Graficar_Ls(rutaarir,id,rutabuscar);
+        }
+
     }else{
         std::cout << "NO SE CUMPLIERO LOS REQUISITOS OBLIGATORIOS"<<std::endl;
     }
@@ -619,25 +359,40 @@ void Admin_Disco::Montar(){
         }
 
         Nodo_Mount *nuevoruta=new Nodo_Mount();
+        unsigned long long int  Posicion_Start;
+        unsigned long long int  Particion_Size;
         nuevoruta->Ruta=ruta;
-        if(rutaexiste==false){
-
-            //comprobamos si contiene la particion
-            bool Encontrar_Particion=false;
-            FILE *arch;
-            arch=fopen(ruta.c_str(),"r+b");
-            if (arch==NULL){
-                exit(1);
-            }else{
-                MBR_Disco Nodo_AP;
-                fread(&Nodo_AP, sizeof(MBR_Disco), 1, arch);
-                char validacion_part_name;
-                strcpy(&validacion_part_name, name.c_str());
-                if(strcmp(Nodo_AP.mbr_partition_1.part_name,&validacion_part_name)== 0 || strcmp(Nodo_AP.mbr_partition_2.part_name,&validacion_part_name)== 0 || strcmp(Nodo_AP.mbr_partition_3.part_name,&validacion_part_name)== 0 ||strcmp(Nodo_AP.mbr_partition_4.part_name,&validacion_part_name)== 0){
-                    Encontrar_Particion=true;
-                }
+        //comprobamos si contiene la particion
+        bool Encontrar_Particion=false;
+        FILE *arch;
+        arch=fopen(ruta.c_str(),"r+b");
+        if (arch==NULL){
+            exit(1);
+        }else{
+            MBR_Disco Nodo_AP;
+            fread(&Nodo_AP, sizeof(MBR_Disco), 1, arch);
+            char validacion_part_name;
+            strcpy(&validacion_part_name, name.c_str());
+            if(strcmp(Nodo_AP.mbr_partition_1.part_name,&validacion_part_name)== 0 ){
+                Encontrar_Particion=true;
+                Posicion_Start=Nodo_AP.mbr_partition_1.part_start;
+                Particion_Size=Nodo_AP.mbr_partition_1.part_size;
+            }else if( strcmp(Nodo_AP.mbr_partition_2.part_name,&validacion_part_name)== 0){
+                Encontrar_Particion=true;
+                Posicion_Start=Nodo_AP.mbr_partition_2.part_start;
+                Particion_Size=Nodo_AP.mbr_partition_2.part_size;
+            }else if(strcmp(Nodo_AP.mbr_partition_3.part_name,&validacion_part_name)== 0){
+                Encontrar_Particion=true;
+                Posicion_Start=Nodo_AP.mbr_partition_3.part_start;
+                Particion_Size=Nodo_AP.mbr_partition_3.part_size;
+            }else if(strcmp(Nodo_AP.mbr_partition_4.part_name,&validacion_part_name)== 0){
+                Encontrar_Particion=true;
+                Posicion_Start=Nodo_AP.mbr_partition_4.part_start;
+                Particion_Size=Nodo_AP.mbr_partition_4.part_size;
             }
 
+        }
+        if(rutaexiste==false){
 
             if(Encontrar_Particion==true){
                 //agregar ruta
@@ -653,7 +408,12 @@ void Admin_Disco::Montar(){
                 nuevo->cantidad=posicion;
                 nuevo->Ruta=ruta;
                 nuevo->Nombre=name;
+                nuevo->Posicion_Start=Posicion_Start;
+                nuevo->Particion_Size=Particion_Size;
                 this->Lista_Montaje.append(*nuevo);
+                //modificamos el superbloque
+                SuperBloque *bloque =new SuperBloque();
+                bloque->EventoMount(ruta,Posicion_Start,0);
                 std::cout <<"Insertado: "<<nuevonodo<<std::endl;
 
             }else{
@@ -675,14 +435,14 @@ void Admin_Disco::Montar(){
                         break;
                     }else{
                         //comprobacion de posicion
-                        if(it3->cantidad>posicion){
-                            posicion=it3->cantidad;
+                        if(it3->cantidad==posicion){
+                            posicion=(it3->cantidad)+1;
                         }
                     }
                 }
             }
+            //encontrar poicion del disco y tamaño
             if(Encontrado==false){
-                posicion++;
                 std::string nuevonodo="vd";
                 char car = char(caracter);
                 nuevonodo+=car;
@@ -692,7 +452,12 @@ void Admin_Disco::Montar(){
                 nuevo->Id=nuevonodo;
                 nuevo->Ruta=ruta;
                 nuevo->Nombre=name;
+                nuevo->Posicion_Start=Posicion_Start;
+                nuevo->Particion_Size=Particion_Size;
                 this->Lista_Montaje.append(*nuevo);
+                //modificamos el superbloque
+                SuperBloque *bloque =new SuperBloque();
+                bloque->EventoMount(ruta,Posicion_Start,0);
                 std::cout <<"Insertado: "<<nuevonodo<<std::endl;
 
 
@@ -731,6 +496,8 @@ void Admin_Disco::Desmontar(){
         QList  <Nodo_Mount> :: iterator it2;
         for(it2 = this->Lista_Montaje.begin(); it2 != this->Lista_Montaje.end(); ++it2){
             std::string temporalstring=it2->Id;
+            std::string temruta=it2->Ruta;
+
             if(id==temporalstring){
                 bandera=true;
                 std::cout<<"DESEA DESMONTAR "<<temporalstring<<std::endl;
@@ -740,6 +507,33 @@ void Admin_Disco::Desmontar(){
                 std::cin >>opcion;
                 if(opcion==1){
                     it2 = Lista_Montaje.erase(it2);
+                    //modificamos el superbloque
+                    SuperBloque *bloque =new SuperBloque();
+                    bloque->EventoMount(it2->Ruta,it2->Posicion_Start,1);
+                    //recorremos si el dato montado solo es uno en caso de que sea se borra la ruta en la otra lista
+                    QList  <Nodo_Mount> :: iterator it3;
+                    bool Encontrado=false;
+                    for(it3 = this->Lista_Montaje.begin(); it3 != this->Lista_Montaje.end(); ++it3){
+                        //si la ruta no exite se elimina de la lista de rutas
+                        std::string temporalRuta=it2->Ruta;
+                        if(temruta==temporalRuta){
+                            Encontrado=true;
+                            break;
+                        }
+
+                    }
+                    //eliminacion
+                    if(Encontrado==false){
+                        QList  <Nodo_Mount> :: iterator it4;
+                        for(it4 = this->RutaCantidad.begin(); it4 != this->RutaCantidad.end(); ++it4){
+                            std::string teRuta=it4->Ruta;
+                            if(teRuta==temruta){
+                                it4 = Lista_Montaje.erase(it4);
+                                break;
+                            }
+                        }
+
+                    }
                 }
                 break;
             }
@@ -755,7 +549,6 @@ void Admin_Disco::Desmontar(){
         for(it9 = this->Lista_Montaje.begin(); it9 != this->Lista_Montaje.end(); ++it9){
             std::string datomontado=it9->Id;
             std::cout<<datomontado<<" Nombre: "<< it9->Nombre<<std::endl;
-
         }
         std::cin.get();
         QProcess::execute("clear");
@@ -771,7 +564,7 @@ void Admin_Disco::FormateoEXT(){
 
     std::string id=Analizador_C->id;
     std::string Tipo_Formateo="full";
-    std::string FormatoFS="2fs";
+    QString FormatoFS="2";
     int CantidadObligatoria=0;
     //Validaciones
     if(id.length()!=0){CantidadObligatoria++;}
@@ -799,10 +592,10 @@ void Admin_Disco::FormateoEXT(){
            //insertamos contenido
            QList  <std::string> :: iterator it2=std::next(it);
            std::string temporalstring2=*it2;
-           if(case_insensitive_match(temporalstring2,"2fs")){
-               FormatoFS="2fs";
-           }else if(case_insensitive_match(temporalstring2,"3fs")){
-               FormatoFS="3fs";
+           if(case_insensitive_match(temporalstring2,"2fs") || temporalstring2=="2"){
+               FormatoFS="2";
+           }else if(case_insensitive_match(temporalstring2,"3fs") || temporalstring2=="3"){
+               FormatoFS="3";
            }else{
                std::cout<<"Formato FS Incorrecto"<<std::endl;
            }
@@ -810,8 +603,13 @@ void Admin_Disco::FormateoEXT(){
 
     }
     if(CantidadObligatoria>=1){
+        //Creacion Carpeta Users
+        QString s="teo";
+        unsigned long long int  Posicion_Start;
+        unsigned long long int  Posicion_Size;
+        QDir dir(s); if (!dir.exists()) { dir.mkpath("."); }
         std::string ruta;
-        std::string nombre;
+        QString nombre;
         if(case_insensitive_match(Tipo_Formateo, "FAST")||case_insensitive_match(Tipo_Formateo, "FULL")) {
             //Busca el id y obtiene la ruta
             QList  <Nodo_Mount> :: iterator it;
@@ -819,40 +617,69 @@ void Admin_Disco::FormateoEXT(){
                 std::string tempotalString=it->Id;
                 if(tempotalString==id){
                    ruta=it->Ruta;
-                   nombre=it->Nombre;
-                   it->Fs=FormatoFS;
+                   std::cout<<"ruta: "+ruta<<std::endl;
+                   nombre=it->Nombre.c_str();
+                   it->Fs=FormatoFS.toStdString();
+                   Posicion_Start=it->Posicion_Start;
+                   Posicion_Size=it->Particion_Size;
                 }
             }
 
             //Creacion del archivo Users.txt
             std::ofstream file;
-            file.open(id+"_Users.txt");
+            file.open("teo/"+nombre.toStdString()+"_Users.txt");
             file <<"1,G,root\n";
             file <<"1,U,root,root,123";
             file.close();
-            //empezando formateo
-            FILE *arch;
-            arch=fopen(ruta.c_str(),"r+b");
-            if (arch==NULL){
-                exit(1);
-            }else{
-                MBR_Disco Nodo_AP;
-                fread(&Nodo_AP, sizeof(MBR_Disco), 1, arch);
-                if(Nodo_AP.mbr_partition_1.part_name==nombre){
-                    strcpy(Nodo_AP.mbr_partition_1.part_User, id.c_str());
-                }else if(Nodo_AP.mbr_partition_2.part_name==nombre){
-                    strcpy(Nodo_AP.mbr_partition_1.part_User, id.c_str());
-                }else if(Nodo_AP.mbr_partition_3.part_name==nombre){
-                    strcpy(Nodo_AP.mbr_partition_1.part_User, id.c_str());
-                }else if(Nodo_AP.mbr_partition_4.part_name==nombre){
-                    strcpy(Nodo_AP.mbr_partition_1.part_User, id.c_str());
+
+            //insertamos Super Bloqe en disk
+            SuperBloque *SuperB=new SuperBloque();
+            SuperB->InsertarBloque(ruta,FormatoFS.toInt(),Posicion_Start,Posicion_Size);
+            //insertar carpeta user.txt
+            BloqueArchivo *Bloque_nuevo=new BloqueArchivo();
+            Bloque_nuevo->Busqueda_Archivo(ruta,Posicion_Start,"Users.txt",20,"teo/"+nombre.toStdString()+"_Users.txt",0);
+            //si es ext3 crear en bitacora
+            if(FormatoFS.toInt()==3){
+                //tipo si es 0 es Carpeta
+                //1 es Archivo
+                FILE *arch;
+                arch=fopen(ruta.c_str(),"r+b");
+                if (arch==NULL){
+                }else{
+                    //cambio el actual a 0 y el nuevo le ponto 1
+                    Super_Bloque Nodo_AP;
+                    fseek(arch,Posicion_Start,SEEK_SET);
+                    fread(&Nodo_AP, sizeof(Super_Bloque), 1, arch);
+
+                    Nodo_Journaling nuevo;
+                    nuevo.Ultimo=1;
+                    strcpy(nuevo.ruta,"/Users.txt");
+                    nuevo.size=64;
+                    strcpy(nuevo.tipo,"Grupo");
+                    strcpy(nuevo.Nombre,"root");
+                    //fecha
+                    time_t current_time;
+                    struct tm * time_info;
+                    char timeString[9];
+                    time(&current_time);
+                    time_info = localtime(&current_time);
+                    strftime(timeString, sizeof(timeString), "%H:%M:%S", time_info);
+                    strcpy(nuevo.mtime,timeString);
+                    strcpy(nuevo.Descripcion,"Crear Grupo");
+                    fseek(arch,Nodo_AP.s_block_start*Nodo_AP.s_blocks_count,SEEK_SET);
+                    fwrite(&nuevo, sizeof(Nodo_Journaling), 1, arch);
+                    fclose(arch);
                 }
-                fwrite(&Nodo_AP,sizeof (MBR_Disco),1,arch);
+                //segundo dato
+                Bloque_Journali *BloqueJ=new Bloque_Journali();
+                char rutaenviar[60]="/Users.txt";
+                char tipoenvio[10]="Usuario";
+                char Nombreenvio[11]="root";
+                char Descripcionenvio[25]="Crear Usuario";
+                BloqueJ->Insertar_BloqueJour(ruta,Posicion_Start,rutaenviar,64,tipoenvio,Nombreenvio,Descripcionenvio);
             }
-            fclose(arch);
-
-
-            std::cout<<"Creado Archivo User.txt de "<<id<<std::endl;
+            std::cout<<"Creado Archivo User.txt de:"<<id<<std::endl;
+            std::cout<<"Insertado Super Bloque en Particion: "+nombre.toStdString()<<std::endl;
             std::cin.get();
             QProcess::execute("clear");
         }

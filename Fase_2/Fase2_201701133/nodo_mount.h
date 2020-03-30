@@ -13,6 +13,8 @@ public:
     std::string Id="";
     std::string Nombre="";
     std::string Fs;
+    unsigned long long int  Posicion_Start;
+    unsigned long long int Particion_Size;
     int cantidad=1;
     //QList <Structs_Users> Lista_Usuario;
 };

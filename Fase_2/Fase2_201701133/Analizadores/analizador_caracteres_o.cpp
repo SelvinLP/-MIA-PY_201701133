@@ -38,6 +38,13 @@ void Analizador_Caracteres_O::AnalisarCaracteres(){
            ruta=*it2;
         }
 
+        s2 = "RUTA";
+        if(case_insensitive_match(temporalstring, s2)) {
+           //insertamos contenido
+           QList  <std::string> :: iterator it2=std::next(it);
+           rutaReporte=*it2;
+        }
+
         s2 = "FIT";
         if(case_insensitive_match(temporalstring, s2)) {
            //insertamos contenido
@@ -77,12 +84,28 @@ void Analizador_Caracteres_O::AnalisarCaracteres(){
            std::string temnombre=*it2;
            if(case_insensitive_match(temnombre, "mbr") ){
                tiponombre="mbr";
+           }if(case_insensitive_match(temnombre, "disk") ){
+               tiponombre="disk";
+           }else if(case_insensitive_match(temnombre, "inode") ){
+               tiponombre="inode";
+           }else if(case_insensitive_match(temnombre, "journaling") ){
+               tiponombre="journaling";
+           }else if(case_insensitive_match(temnombre, "block") ){
+               tiponombre="block";
+           }else if(case_insensitive_match(temnombre, "bm_inode") ){
+               tiponombre="bm_inode";
+           }else if(case_insensitive_match(temnombre, "bm_block") ){
+               tiponombre="bm_block";
+           }else if(case_insensitive_match(temnombre, "tree") ){
+               tiponombre="tree";
+           }else if(case_insensitive_match(temnombre, "sb") ){
+               tiponombre="sb";
+           }else if(case_insensitive_match(temnombre, "file") ){
+               tiponombre="file";
+           }else if(case_insensitive_match(temnombre, "ls") ){
+               tiponombre="ls";
            }else{
-               if(case_insensitive_match(temnombre, "disk") ){
-                   tiponombre="disk";
-               }else{
-                   std::cout <<"Nombre Incorrecto debe ser disk o mbr"<<std::endl;
-               }
+               std::cout<<"El Parametro Name no dentro de los Intervalos"<<std::endl;
            }
         }
 
@@ -130,6 +153,42 @@ void Analizador_Caracteres_O::AnalisarCaracteres(){
            }
         }
 
+        s2 = "P";
+        if(case_insensitive_match(temporalstring, s2)) {
+           //insertamos contenido
+           QList  <std::string> :: iterator it2=std::next(it);
+           std::string temnombre=*it2;
+           P="p";
+        }
+
+        s2 = "CONT";
+        if(case_insensitive_match(temporalstring, s2)) {
+           //insertamos contenido
+           QList  <std::string> :: iterator it2=std::next(it);
+           cont_ruta=*it2;
+        }
+
+        s2 = "FILE";
+        if(case_insensitive_match(temporalstring, s2)) {
+           //insertamos contenido
+           QList  <std::string> :: iterator it2=std::next(it);
+           file=*it2;
+        }
+
+        s2 = "UGO";
+        if(case_insensitive_match(temporalstring, s2)) {
+           //insertamos contenido
+           QList  <std::string> :: iterator it2=std::next(it);
+           ugo=std::atoi(it2->c_str());
+        }
+
+        s2 = "R";
+        if(case_insensitive_match(temporalstring, s2)) {
+           //insertamos contenido
+           QList  <std::string> :: iterator it2=std::next(it);
+           std::string temnombre=*it2;
+           R="r";
+        }
     }
 }
 

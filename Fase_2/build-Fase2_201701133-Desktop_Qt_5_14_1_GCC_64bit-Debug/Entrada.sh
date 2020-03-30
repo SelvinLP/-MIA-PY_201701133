@@ -4,18 +4,18 @@
 #CREANDO DISCOS ----------------------------------------------------------------------------------------
 mkdisk -fit=BF -unit=M -size=50 -path="/home/archivos/fase1/Disco1.disk" 
 mkdisk -unit=K -size=51200 -path="/home/archivos/fase1/Disco2.disk" -fit=BF
-mkDisk -size=10 -path="/home/archivos/fase1/Disco4.disk" -unit=k -fit=BF
-mkdisk -size=51200 -unit=k -path="/home/archivos/fase1/mis archivos/Disco3.disk" -fit=BF
-mkdisk -size=51200 -unit=k -path="/home/archivos/fase1/mis archivos/archivos/Disco5.disk" -fit=BF
+#mkDisk -size=10 -path="/home/archivos/fase1/Disco4.disk" -unit=k -fit=BF
+#mkdisk -size=51200 -unit=k -path="/home/archivos/fase1/mis archivos/Disco3.disk" -fit=BF
+#mkdisk -size=51200 -unit=k -path="/home/archivos/fase1/mis archivos/archivos/Disco5.disk" -fit=BF
 
 #Debería dar error
 #mkDisk  -size=30 -path=/home/archivos/fase1/Disco4.disk
 
 #ELIMINANDO DISCOS ------------------------------------------------------------------------------------
 #Elimina un D, el primero debería dar error
-rmDisk -path=/home/Disco4.disk
-rmDisk -path=/home/archivos/fase1/Disco2.disk
-rmDisk -path="/home/archivos/fase1/mis archivos/Disco3.disk"
+#rmDisk -path=/home/Disco4.disk
+#rmDisk -path=/home/archivos/fase1/Disco2.disk
+#rmDisk -path="/home/archivos/fase1/mis archivos/Disco3.disk"
 
 #CREANDO PARTICIONES ----------------------------------------------------------------------------------
 #Crear particiones Disco1.disk
@@ -74,14 +74,14 @@ mount -path=/home/archivos/fase1/Disco2.disk -name=Part24 #vdb13
 mount -path=/home/archivos/fase1/Disco2.disk -name=Part25 #vdb14 Debe dar error por qu no existe
 
 #Desmontar las particiones
-unmount -id=vda4
+#unmount -id=vda4
 #Desmontar Error
-unmount -id=vdx1
+#unmount -id=vdx1
 #Creando reportes
 rep -id=vda1 -Path=/home/mia/mbr1.png -name=mbr 
 rep -id=vda1 -Path=/home/mia/disk1.png -name=disk
-rep -id=vdb1 -Path=/home/mia/mbr4.png -name=mbr 
-rep -id=vdb1 -Path=/home/mia/disk4.png -name=disk
+#rep -id=vdb1 -Path=/home/mia/mbr4.png -name=mbr 
+#rep -id=vdb1 -Path=/home/mia/disk4.png -name=disk
 
 #Eliminando particiones
 fdisk -delete=fast -name=Part1 -path=/home/archivos/fase1/Disco1.disk
@@ -96,8 +96,8 @@ fdisk -add=1 -unit=K -path=/home/archivos/fase1/Disco2.disk -name=Part13
 #Creando reportes
 rep -id=vda1 -Path=/home/mia/mbr2.png -name=mbr 
 rep -id=vda1 -Path=/home/mia/disk2.png -name=disk
-rep -id=vdb1 -Path=/home/mia/mbr5.png -name=mbr 
-rep -id=vdb1 -Path=/home/mia/disk5.png -name=disk
+#rep -id=vdb1 -Path=/home/mia/mbr5.png -name=mbr 
+#rep -id=vdb1 -Path=/home/mia/disk5.png -name=disk
 
 #Eliminando tamaño de particiones
 fdisk -add=-700 -unit=K -path=/home/archivos/fase1/Disco1.disk -name=Part3 
@@ -110,14 +110,14 @@ fdisk -add=-1000 -unit=K -path=/home/archivos/fase1/Disco1.disk -name=Part13
 
 
 #Creando reportes
-rep -id=vda1 -Path=/home/mia/mbr3.png -name=mbr 
-rep -id=vda1 -Path=/home/mia/disk3.png -name=disk
-rep -id=vdb1 -Path=/home/mia/mbr6.png -name=mbr 
-rep -id=vdb1 -Path=/home/mia/disk6.png -name=disk
+#rep -id=vda1 -Path=/home/mia/mbr3.png -name=mbr 
+#rep -id=vda1 -Path=/home/mia/disk3.png -name=disk
+#rep -id=vdb1 -Path=/home/mia/mbr6.png -name=mbr 
+#rep -id=vdb1 -Path=/home/mia/disk6.png -name=disk
 
 #Formateo de Particiones
-mkfs -type=fast -id=vda1
-mkfs -type=full -id=vdb1
+mkfs -type=fast -id=vda1 -fs=3fs
+#mkfs -type=full -id=vdb1
 
 #login 
 login -id=vda1 -usr=root -pwd=123
@@ -142,7 +142,70 @@ rmgrp -name="hola adios"
 mkgrp -name="R hola" 
 mkusr -grp="hola adios" -usr=Intento -pwd=593 #no se puede crear grupo no existe
 mkusr -grp=si2 -usr=Nuevo3 -pwd=0923
+mkusr -grp="R hola" -usr=YES -pwd=si
 #Eliminar Usuario
 rmusr -usr=Nuevo2
 rmusr -usr=Nuevo2
 mkusr -grp=si2 -usr=POSICION2 -pwd=234
+rmusr -usr=POSICION2
+#Reporte Super Bloque
+unmount -id=vda1
+pause
+mount -path=/home/archivos/fase1/Disco1.disk -name=Part1 #vda1
+
+#MKDIR
+mkdir -Path=/Intento1
+mkdir -path="/home/archivos/mia/fase2" -p
+#Cambio de Permisos
+chmod -path="/home/archivos/mia" -ugo=555 -R
+pause
+#MKFILE
+mkfile -p -path="/home/archivos/mia/fase2/b64/hola.txt" -size=70
+cat -file="/home/archivos/mia/fase2/b64/hola.txt"
+edit -path="/home/archivos/mia/fase2/b64/hola.txt" -cont="Editado"
+ren -path="/home/archivos/mia/fase2/b64" -name="Editado2"
+#cat -file="/Users.txt"
+#copiar
+#cp path="/home/archivos/mia/fase2" -dest=/Intento1
+#busqueda con find
+find -path="/archivos" -name=hola.txt
+pause
+
+#Cambio de Propetario
+chown -path="/home/archivos/mia" -usr=Nuevo3 -r
+#Cambio de Grupo
+chgrp -usr=YES -grp=si2
+pause
+#Reporte TREE
+rep -id=vda1 -name=bm_inode -Path=/home/mia/bm1_inode.png
+rep -id=vda1 -name=bm_block -Path=/home/mia/bm1_block.png
+rep -id=vda1 -name=file -path=/home/mia/filerep.png -ruta="/home/archivos/mia/fase2/Editado2/hola.txt"
+rep -id=vda1 -name=inode -Path=/home/mia/Linode.png
+rep -id=vda1 -name=block -Path=/home/mia/Lblock.png
+rep -id=vda1 -name=sb -Path=/home/mia/SuperBloque1.png
+rep -id=vda1 -name=tree -Path=/home/mia/TREE.png
+rep -id=vda1 -name=journaling -Path=/home/mia/repor.png
+
+#perdida
+#loss -id=vda1
+
+#reportes de perdidas
+#rep -id=vda1 -name=bm_inode -Path=/home/mia/bm1_inode_perdida.png
+#rep -id=vda1 -name=bm_block -Path=/home/mia/bm1_block_perdida.png
+#rep -id=vda1 -name=inode -Path=/home/mia/Linode_perdida.png
+#rep -id=vda1 -name=block -Path=/home/mia/Lblock_perdida.png
+#rep -id=vda1 -name=sb -Path=/home/mia/SuperBloque1_perdida.png
+#rep -id=vda1 -name=tree -Path=/home/mia/TREE_perdida.png
+#rep -id=vda1 -name=journaling -Path=/home/mia/repor_perdida.png
+
+#recovery -id=vda1
+#recuperacion
+#rep -id=vda1 -name=bm_inode -Path=/home/mia/bm1_inode_recuperacion.png
+#rep -id=vda1 -name=bm_block -Path=/home/mia/bm1_block_recuperacion.png
+#rep -id=vda1 -name=inode -Path=/home/mia/Linode_recuperacion.png
+#rep -id=vda1 -name=block -Path=/home/mia/Lblock_recuperacion.png
+#rep -id=vda1 -name=sb -Path=/home/mia/SuperBloque1_recuperacion.png
+#rep -id=vda1 -name=tree -Path=/home/mia/TREE_recuperacion.png
+rep -id=vda1 -name=ls -ruta="/home/archivos/mia/fase2/Editado2/hola.txt" -Path=/home/mia/reportels.png
+pause
+

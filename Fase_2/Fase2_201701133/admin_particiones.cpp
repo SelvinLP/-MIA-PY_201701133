@@ -9,12 +9,6 @@ void Admin_Particiones::RecibirParametros(QList <std::string> P){
     Parametros.clear();
     this->Parametros=P;
     QList  <std::string> :: iterator it;
-//    for(it = this->Parametros.begin(); it != this->Parametros.end(); ++it){
-//        std::string temporalstring=*it;
-//        std::cout <<temporalstring<<std::endl;
-//    }
-
-    //recibe lista de particiones
 
 }
 
