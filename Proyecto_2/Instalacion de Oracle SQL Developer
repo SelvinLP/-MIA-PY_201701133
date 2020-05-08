@@ -1,0 +1,66 @@
+EL ARCHIVO DE SQLDEVELOPER QUE DEBEN DESCARGAR ES EL DE 
+"OTRAS PLATAFORMAS"
+
+1.- Tener instalado JDK Oracle (8)
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+sudo update-alternatives --config java
+
+2.- Descomprimir Archivo SQL Developer en /opt
+
+sudo unzip sqldeveloper-*-no-jre.zip -d /opt/
+sudo chmod +x /opt/sqldeveloper/sqldeveloper.sh
+
+3.-
+sudo ln -s /opt/sqldeveloper/sqldeveloper.sh /usr/local/bin/sqldeveloper
+
+4.- Editar archivo 
+sudo nano /opt/sqldeveloper/sqldeveloper.sh
+
+5.- Pegar
+
+#!/bin/bash
+unset -v GNOME_DESKTOP_SESSION_ID
+cd /opt/sqldeveloper/sqldeveloper/bin./sqldeveloper "$@"
+
+OR ERROR: ./sqldeveloper: Permission denied
+
+#!/bin/bash
+unset -v GNOME_DESKTOP_SESSION_ID
+cd /opt/sqldeveloper/sqldeveloper/bin && bash sqldeveloper $*
+
+/*
+IGNORAR --VIENE POR DEFECTO..
+
+#!/bin/bash
+cd "`dirname $0`"/sqldeveloper/bin && bash sqldeveloper $*
+
+*/
+
+6.- Run SQL Developer:
+
+sqldeveloper
+OR
+sudo /opt/sqldeveloper/sqldeveloper.sh
+
+7.- Acceso
+
+cd /usr/share/applications/
+sudo vim sqldeveloper.desktop
+
+8.- Pegar
+
+[Desktop Entry]
+Exec=sqldeveloper
+Terminal=false
+StartupNotify=true
+Categories=GNOME;Oracle;
+Type=Application
+Icon=/opt/sqldeveloper/icon.png
+Name=Oracle SQL Developer
+
+9.- Actualizar Desktop
+
+sudo update-desktop-database

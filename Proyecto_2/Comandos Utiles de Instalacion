@@ -1,0 +1,78 @@
+Instalacion de Herramientas npm
+//al iniciar el proyecto hacer
+	npm init -y
+	npm i express
+	npm i cors
+	npm i morgan
+	mpn i oracledb
+	npm i -D nodemons
+	npm i nodemailer
+//Agregar en config el dev
+	"dev": "nodemon src/index.js"
+
+//ejecutar nodemon para que se actualice solo
+	npm run dev
+//Cerrar npm run dev
+sudo lsof -i :3000
+kill -9 {PID}
+
+//Crear variable de entorno
+export LD_LIBRARY_PATH=/opt/instantclient_18_5/
+
+//Visualizar Variable de entorno
+echo $LD_LIBRARY_PATH
+
+
+//si en dado casoo les tira error de libai.so.1
+sudo apt-get install libaio1
+
+//instalar angular client
+https://cli.angular.io/
+Cliente Angular consumiendo REST API nodejs.
+
+Este es un cliente hecho con el framework Angular, parte de la serie del taller REST API con nodejs, oracle y angular.
+Instalando Dependencias y Correr nuestro servidor
+
+    Para instalar las dependencias necesarios para que nuestro proyecto funcione debemos hacer un npm install dentro de la carpeta de nuestro proyecto.
+
+    ~$ npm install
+
+    Para correr nuesto servidor ejecutamos:
+
+    ~$ ng serve --open
+
+    y ete nos abrira nuestro cliente en: http://localhost:4200/.
+
+Comandos para que angular se este actualizando solo
+sudo sysctl fs.inotify.max_user_watches=524288
+sudo sysctl -p
+
+//generar conponentes en angular 
+ng generate component conponents/CRUD
+ó
+ng g c conponents/CRUD
+
+ng g c conponents/Home
+ng g c conponents/Login
+
+ng g s services/User
+
+//para permisos entre paginas
+ng g g guards/auth 
+
+Comandos Para Instalar Docker
+	link:https://www.programadornovato.com/02-instalar-docker-en-ubuntu-18-04/
+Tambien para comandos
+	https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es
+
+//Link de videos tutoriales
+Guardados en ver mas tarde de cuenta de youtube
+https://www.youtube.com/watch?time_continue=11407&v=uEfVeyV1gz4&feature=emb_title
+https://www.youtube.com/watch?v=mKvo36Rrdm8
+https://www.youtube.com/watch?v=NuHrW-qHd-k&list=WL&index=3&t=0s
+
+//iniciar rapido proyecto
+sudo docker start b47ee178fb35
+sudo docker exec -it b47ee178fb35 bash
+sh post_install.sh
+
